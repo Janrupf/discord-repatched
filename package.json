@@ -1,0 +1,34 @@
+{
+  "name": "discord-repatched",
+  "version": "1.0.0",
+  "description": "Better discord patcher",
+  "scripts": {
+    "lint": "tslint -p .",
+    "compile": "tsc -p .",
+    "run": "npm run compile && node build/src/Index.js",
+    "package": "npm run compile && npm run _package_step_1 && npm run _package_step_2 && npm run _package_step_3",
+    "_package_step_1": "rm -rf dist",
+    "_package_step_2": "pkg -t node12-linux,node12-windows,node12-mac -o dist/discord-repatched build/src/Index.js",
+    "_package_step_3": "cd dist && zip -r discord-repatched.zip *"
+  },
+  "keywords": [
+    "discord",
+    "patch"
+  ],
+  "author": "Janrupf",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/rimraf": "^2.0.3",
+    "pkg": "^4.4.2",
+    "pkg-fetch": "^2.6.4",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "asar": "^2.0.3",
+    "commander": "^4.0.1",
+    "rimraf": "^3.0.0"
+  }
+}
