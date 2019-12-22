@@ -1,7 +1,11 @@
 {
   "name": "discord-repatched",
   "version": "1.0.0",
-  "description": "Better discord patcher",
+  "description": "Simple discord patch manager",
+  "repository": {
+    "url": "https://github.com/Janrupf/discord-repatched",
+    "type": "git"
+  },
   "scripts": {
     "lint": "tslint -p .",
     "compile": "tsc -p .",
@@ -9,7 +13,8 @@
     "package": "npm run compile && npm run _package_step_1 && npm run _package_step_2 && npm run _package_step_3",
     "_package_step_1": "rm -rf dist",
     "_package_step_2": "pkg -t node12-linux,node12-windows,node12-mac -o dist/discord-repatched build/src/Index.js",
-    "_package_step_3": "cd dist && zip -r discord-repatched.zip *"
+    "_package_step_3": "cd dist && zip -r discord-repatched.zip *",
+    "_arch_build:package": "pkg -t node12-linux -o dist/discord-repatched-linux build/src/Index.js"
   },
   "keywords": [
     "discord",

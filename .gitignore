@@ -4,3 +4,6 @@ dist/
 node_modules/
 package-lock.json
 build-info.tsc
+
+arch-dist/*
+!arch-dist/git/PKGBUILD

@@ -1,0 +1,39 @@
+pkgname="discord-repatched-git"
+_pkgname="discord-repatched"
+pkgver=r2.319d067
+pkgrel=1
+pkgdesc="Simple discord patch manager"
+arch=("any")
+license=("MIT")
+options=("!emptydirs" "!strip")
+conflicts=("discord-repatched")
+provides=("discord-repatched")
+md5sums=("SKIP")
+makedepends=("git")
+source=("discord-repatched::git+https://github.com/Janrupf/discord-repatched.git")
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  npm i -D
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  npm run compile
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}"
+  npm run _arch_build:package
+  mkdir -p "${pkgdir}/usr/bin"
+  cp dist/discord-repatched-linux "${pkgdir}/usr/bin/discord-repatched"
+  chmod +x "${pkgdir}/usr/bin/discord-repatched"
+}
