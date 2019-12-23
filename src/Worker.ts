@@ -137,6 +137,8 @@ export default class Worker {
                     "--exclude=node_modules",
                     "--exclude=package.json",
                     "--exclude=package-lock.json",
+                    "--exclude=.idea",
+                    "--exclude=.git",
                     "-ruN",
                     "original",
                     "modded"
