@@ -136,6 +136,7 @@ export default class Worker {
                     "diff",
                     "--exclude=node_modules",
                     "--exclude=package.json",
+                    "--exclude=package-lock.json",
                     "-ruN",
                     "original",
                     "modded"

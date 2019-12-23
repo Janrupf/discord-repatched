@@ -1,6 +1,6 @@
 pkgname="discord-repatched-git"
 _pkgname="discord-repatched"
-pkgver=r2.319d067
+pkgver=r2.c7dc825
 pkgrel=1
 pkgdesc="Simple discord patch manager"
 arch=("any")
